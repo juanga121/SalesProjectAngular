@@ -1,26 +1,26 @@
-<form>
+<form [formGroup]="form" (ngSubmit)="saveChanges()">
 
-    <label for="identitytype"></label>
-    <select name="identitytype" id="identitytype" formControlName="identity_type">
-        <option value="0">Cedula Ciudadania</option>
-        <option value="1">Cedula Extranjeria</option>
-        <option value="2">Trejeta Identidad</option>
+    <label for="identitytype">Tipo de documento:</label>
+    <select name="identitytype" id="identitytype" [formControl]="form.controls.identity_type">
+        <option *ngFor = "let option of identityOptions" [value]="option.value">
+            {{ option.label }}
+        </option>
     </select>
 
-    <label for="identity_number">Numero de documento</label>
-    <input type="text" formControlName="document_identity" id="identity_number" name="identity_number">
+    <label for="identity_number">Numero de documento:</label>
+    <input type="number" [formControl]="form.controls.document_identity" id="identity_number" name="identity_number">
 
-    <label for="nameuser">Nombre</label>
-    <input type="text" formControlName="name" id="nameuser" name="nameuser">
+    <label for="nameuser">Nombre:</label>
+    <input type="text" [formControl]="form.controls.name" id="nameuser" name="nameuser">
 
-    <label for="lastname">Apellido</label>
-    <input type="text" formControlName="last_name" id="lastname" name="lastname">
+    <label for="lastname">Apellido:</label>
+    <input type="text" [formControl]="form.controls.last_name" id="lastname" name="lastname">
 
-    <label for="emailuser">Correo</label>
-    <input type="email" formControlName="email" id="emailuser" name="emailuser">
+    <label for="emailuser">Correo:</label>
+    <input type="email" [formControl]="form.controls.email" id="emailuser" name="emailuser">
 
-    <label for="password">Contraseña</label>
-    <input type="password" formControlName="password" id="password" name="password">
+    <label for="password">Contraseña:</label>
+    <input type="password" [formControl]="form.controls.password" id="password" name="password">
 
     <button type="submit">Confirmar</button>
 
