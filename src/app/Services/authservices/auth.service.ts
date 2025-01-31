@@ -17,7 +17,7 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) { }
 
   login(user: Login): Observable<any> {
-    return this.http.post(this.apiUrl + '/api/Login', user) //accedo a la ruta de login y su respuesta
+    return this.http.post(this.apiUrl + '/api/Login', user)
   }
 
   storesToken(token: string): void {
@@ -43,7 +43,6 @@ export class AuthService {
     if (token && this.jwtHelper.isTokenExpired(token)) {
       this.logout();
     }
-    console.log('Token no a expirado');
   }
 
   getUserPermissions(): string | null {
@@ -54,6 +53,4 @@ export class AuthService {
     }
     return null;
   }
-
-
 }

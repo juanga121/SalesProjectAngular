@@ -1,6 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { AuthService } from './Services/authservices/auth.service';
 
 @Component({
@@ -12,11 +12,16 @@ import { AuthService } from './Services/authservices/auth.service';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     setInterval(() => {
-      this.authService.checkTokenExpiration();
+      const excludedRoutes = ['/login'];
+      const currentRoute = this.router.url;
+
+      if(!excludedRoutes.includes(currentRoute)){
+        this.authService.checkTokenExpiration();
+      }
     }, 5000);
   }
 }
