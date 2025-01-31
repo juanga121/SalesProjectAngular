@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { UserIdentityType, Users } from '../interfaces/users';
-import { UsersService } from '../services/users.service';
+import { UserIdentityType, Users } from '../../Interfaces/users/users';
+import { UsersService } from '../../Services/users/users.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
@@ -27,12 +27,12 @@ export class RegisterUsersComponent {
   ];
 
   form = this.formBuilder.group({
-    identity_type: ['', [Validators.required]],
-    document_identity: ['', [Validators.required]],
-    name: ['', [Validators.required]],
-    last_name: ['', [Validators.required]],
-    email: ['', [Validators.required]],
-    password: ['', [Validators.required]]
+    identity_type: [''],
+    document_identity: [''],
+    name: [''],
+    last_name: [''],
+    email: [''],
+    password: ['']
   });
 
   saveChanges(){
@@ -47,14 +47,14 @@ export class RegisterUsersComponent {
     };
     
     this.userService.addUser(users).subscribe({
-      next: (response) => {
-        console.log(response);
-        alert('Usuario creado correctamente');
-        this.router.navigate(['/']);
-      },
-      error: (error) => {
-        console.error('Error al crear el usuario', error);
+        next: (response) => {
+          alert(response);
+          this.router.navigate(['/login']);
+        },
+        error: (error) => {
+          alert(error);
+        }
       }
-    })
+    );
   }
-} 
+}

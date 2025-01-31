@@ -1,6 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { AuthService } from './Services/authservices/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,13 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
-  title = 'SalesProjectAngular';
+export class AppComponent implements OnInit {
+
+  constructor(private authService: AuthService) { }
+
+  ngOnInit(): void {
+    setInterval(() => {
+      this.authService.checkTokenExpiration();
+    }, 5000);
+  }
 }

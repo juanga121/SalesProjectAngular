@@ -8,19 +8,19 @@
     </select>
 
     <label for="identity_number">Numero de documento:</label>
-    <input type="number" [formControl]="form.controls.document_identity" id="identity_number" name="identity_number">
+    <input type="number" [formControl]="form.controls.document_identity" id="identity_number" name="identity_number" pattern="[0-9]{10}">
 
     <label for="nameuser">Nombre:</label>
-    <input type="text" [formControl]="form.controls.name" id="nameuser" name="nameuser">
+    <input type="text" [formControl]="form.controls.name" id="nameuser" name="nameuser" maxlength="50">
 
     <label for="lastname">Apellido:</label>
-    <input type="text" [formControl]="form.controls.last_name" id="lastname" name="lastname">
+    <input type="text" [formControl]="form.controls.last_name" id="lastname" name="lastname" maxlength="50">
 
     <label for="emailuser">Correo:</label>
     <input type="email" [formControl]="form.controls.email" id="emailuser" name="emailuser">
 
     <label for="password">Contraseña:</label>
-    <input type="password" [formControl]="form.controls.password" id="password" name="password">
+    <input type="password" [formControl]="form.controls.password" id="password" name="password" minlength="8" maxlength="12">
 
     <button type="submit">Confirmar</button>
 
