@@ -1,14 +1,14 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../Services/authservices/auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-login-users',
   standalone: true,
-  imports: [ReactiveFormsModule, HttpClientModule, CommonModule],
+  imports: [ReactiveFormsModule, HttpClientModule, CommonModule, RouterLink],
   templateUrl: './login-users.component.html',
   styleUrl: './login-users.component.scss'
 })
@@ -32,7 +32,16 @@ export class LoginUsersComponent {
       this.authService.login(users).subscribe({
         next: response => {
           this.authService.storesToken(response.token);
-          this.router.navigate(['/register']);
+
+          const typeUser = this.authService.getUserPermissions();
+
+          if(typeUser === 'SuperUsuario'){
+            this.router.navigate(['/listUsers']);
+          }else if(typeUser === 'Administrador'){
+            this.router.navigate(['/listTickets']);
+          }else if(typeUser === 'Consumidor'){
+            this.router.navigate(['/listUsers']);
+          }
         },
         error: (error) => {
           alert(error);

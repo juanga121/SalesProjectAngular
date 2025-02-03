@@ -1,0 +1,11 @@
+<p>Listado de usuarios</p>
+
+<div *ngFor="let user of listUsers">
+    <div>
+        <p>Tipo de documento: {{user.identity_type}}</p>
+        <p>Numero de documento: {{user.document_identity}}</p>
+        <p>Nombre: {{user.name}}</p>
+        <p>Apellidos: {{user.last_name}}</p>
+        <p>Correo: {{user.email}}</p>
+    </div>
+</div>
