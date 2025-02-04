@@ -47,16 +47,12 @@ export class RegisterUsersComponent {
     };
     
     this.userService.addUser(users).subscribe({
-        next: (response) => {
-          if(response instanceof Error){
-            alert(response.message); 
-          }else{
-            alert(response);
-            this.router.navigate(['/login']);
-          }
+        next: (response: any) => {
+          alert(response.message);
+          this.router.navigate(['/login']);
         },
         error: (error) => {
-          alert(error.error.message);
+          alert(error);
         }
       }
     );

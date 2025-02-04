@@ -30,7 +30,7 @@ export class LoginUsersComponent {
         password: formValues.password || ''
       }
       this.authService.login(users).subscribe({
-        next: response => {
+        next: (response) => {
           this.authService.storesToken(response.token);
 
           const typeUser = this.authService.getUserPermissions();
@@ -40,7 +40,7 @@ export class LoginUsersComponent {
           }else if(typeUser === 'Administrador'){
             this.router.navigate(['/listTickets']);
           }else if(typeUser === 'Consumidor'){
-            this.router.navigate(['/listUsers']);
+            this.router.navigate(['/listTickets']);
           }
         },
         error: (error) => {

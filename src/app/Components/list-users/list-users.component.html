@@ -1,11 +1,28 @@
 <p>Listado de usuarios</p>
 
-<div *ngFor="let user of listUsers">
-    <div>
-        <p>Tipo de documento: {{user.identity_type}}</p>
-        <p>Numero de documento: {{user.document_identity}}</p>
-        <p>Nombre: {{user.name}}</p>
-        <p>Apellidos: {{user.last_name}}</p>
-        <p>Correo: {{user.email}}</p>
-    </div>
+<div id="cont_principal">
+<table>
+    <thead>
+        <tr>
+            <th>Tipo de documento</th>
+            <th>Numero de documento</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Correo</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of listUsers">
+            <td data-label="Tipo de documento">
+                <span *ngIf="user.identity_type == 0">Cedula de ciudadania</span>
+                <span *ngIf="user.identity_type == 1">Cedula de extranjeria</span>
+                <span *ngIf="user.identity_type == 2">Tarjeta de identidad</span>
+            </td>
+            <td data-label="Numero de documento">{{ user.document_identity }}</td>
+            <td data-label="Nombre">{{ user.name }}</td>
+            <td data-label="Apellido">{{ user.last_name }}</td>
+            <td data-label="Correo">{{user.email}}</td>
+        </tr>
+    </tbody>
+</table>
 </div>
