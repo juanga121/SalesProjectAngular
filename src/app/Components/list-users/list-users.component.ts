@@ -1,17 +1,17 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnDestroy, Renderer2 } from '@angular/core';
 import { UsersService } from '../../Services/users/users.service';
 import { Users } from '../../Interfaces/users/users';
-import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { CommonModule, DOCUMENT } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-list-users',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './list-users.component.html',
   styleUrls: ['./list-users.component.scss']
 })
-export class ListUsersComponent {
+export class ListUsersComponent implements OnDestroy{
   serviceUsers = inject(UsersService);
   listUsers?: Users[];
 
@@ -20,5 +20,7 @@ export class ListUsersComponent {
       this.listUsers = users;
       console.log(users);
     })
+  }
+  ngOnDestroy(): void {
   }
 }

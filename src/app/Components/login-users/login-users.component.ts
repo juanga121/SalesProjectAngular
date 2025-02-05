@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../Services/authservices/auth.service';
 import { Router, RouterLink } from '@angular/router';
@@ -12,10 +12,15 @@ import { HttpClientModule } from '@angular/common/http';
   templateUrl: './login-users.component.html',
   styleUrl: './login-users.component.scss'
 })
-export class LoginUsersComponent {
+export class LoginUsersComponent implements OnInit {
   private readonly formBuilder = inject(FormBuilder)
   authService = inject(AuthService)
   router = inject(Router)
+
+  
+  ngOnInit(): void {
+   this.authService.eliminateToken();
+  }
   
   form = this.formBuilder.group({
     email: [''],

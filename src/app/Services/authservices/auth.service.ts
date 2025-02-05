@@ -33,6 +33,11 @@ export class AuthService {
     return token !== null && !this.jwtHelper.isTokenExpired(token); // verifico si no ha expirado el token
   }
 
+  eliminateToken(): void {
+    localStorage.removeItem(this.tokenKey);
+    sessionStorage.removeItem(this.tokenKey);
+  }
+
   logout(): void {
     localStorage.removeItem(this.tokenKey); //elimino el token localmente
     this.router.navigate(['/login']);
