@@ -45,9 +45,30 @@ form#cont_form{
     form#cont_form button{
         padding: 6px;
         margin: 10px 20px;
-        border: 2px solid;
+        border: 2px solid black;
         background-color: #FFC90E;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: linear 0.5s;
     }
+
+        form#cont_form button img{
+            width: 20px;
+            position: absolute;
+            left: -22px;
+            transition: transform 0.2s linear; 
+        }
+        form#cont_form button:hover img{
+            transform: translateX(138px);
+        }
+        form#cont_form button:hover{
+            box-shadow: inset 400px 0 0 0 #123463;
+            color: white;
+        }
     form#cont_form a{
         text-align: center;
         margin-top: 5px;

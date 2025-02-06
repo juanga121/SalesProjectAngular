@@ -35,6 +35,7 @@ header div#cont_header{
         right: 0;
         padding: 10px;
         border-radius: 50px;
+        cursor: pointer;
     }
         header div#cont_header figure#cont_add img{
             width: 50px;
@@ -44,12 +45,15 @@ header div#cont_header{
             display: none;
         }
 
-    header div#cont_header figure#cont_goout img{
-        width: 40px;
-    }
-    header div#cont_header figure#cont_goout p{
-        display: none;
-    }
+    header div#cont_header figure#cont_goout{
+        cursor: pointer;
+    }    
+        header div#cont_header figure#cont_goout img{
+            width: 40px;
+        }
+        header div#cont_header figure#cont_goout p{
+            display: none;
+        }
 
     #cont_principal_responsive{
         display: flex;
@@ -87,7 +91,7 @@ header div#cont_header{
         width: 100%;
         height: 95vh;
         overflow: hidden;
-        overflow: scroll;
+        overflow-y: auto;
         border: 2px solid #123463;
         margin: 20px;
     }

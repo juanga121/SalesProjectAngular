@@ -48,8 +48,31 @@ form#form_register{
         margin-top: 10px;
         padding: 7px 25px;
         background-color: #FFC90E;
-        border: 2px solid;
+        border: 2px solid black;
+        position: relative;
+        overflow: hidden;
+        transition: linear 0.5s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
     }
+        form#form_register button:hover{
+            box-shadow: inset 400px 0 0 0 #123463;
+            color: white;
+        }
+
+        form#form_register button img{
+            width: 20px;
+            position: absolute;
+            left: -22px;
+            transition: transform 0.2s linear;
+        }
+
+        form#form_register button:hover img{
+            transform: translateX(180px);
+        }
+
 
 @media screen and (min-width: 768px){
     form#form_register{

@@ -1,4 +1,3 @@
-<body>
 <div id="cont_principal">
     <form [formGroup]="form" (ngSubmit)="sendLogin()" id="cont_form">
         <figure>
@@ -11,8 +10,10 @@
 
         <input type="password" name="password" id="password" [formControl]="form.controls.password" placeholder="Contraseña">
 
-        <button type="submit">Ingresar</button>
+        <button type="submit">
+            Ingresar
+            <img src="../../../assets/flecha.png" alt="icono">
+        </button>
         <a routerLink = "/register">Registrate</a>
     </form>
 </div>
-</body>

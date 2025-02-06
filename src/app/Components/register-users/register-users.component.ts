@@ -1,10 +1,12 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { UserIdentityType, Users } from '../../Interfaces/users/users';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { UserIdentityType } from '../../Interfaces/users/users';
 import { UsersService } from '../../Services/users/users.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { AuthService } from '../../Services/authservices/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register-users',
@@ -19,6 +21,7 @@ export class RegisterUsersComponent {
   private readonly formBuilder = inject(FormBuilder)
   userService = inject(UsersService)
   router = inject(Router)
+  authService = inject(AuthService)
 
   identityOptions = [
     { value: UserIdentityType.CedulaCiudadania, label: 'Cedula Ciudadania' },
@@ -48,11 +51,17 @@ export class RegisterUsersComponent {
     
     this.userService.addUser(users).subscribe({
         next: (response: any) => {
-          alert(response.message);
-          this.router.navigate(['/login']);
+          Swal.fire('Usuario registrado', response.message, 'success');
+          const redirectUsers = this.authService.getToken();
+          const redirectUsersPermissions = this.authService.getUserPermissions();
+          if (redirectUsers === null || redirectUsersPermissions === 'Administrador' || redirectUsersPermissions === 'Consumidor') {
+            this.router.navigate(['/login']);
+          }else{
+            this.router.navigate(['/listUsers']);
+          }
         },
         error: (error) => {
-          alert(error);
+          Swal.fire('Error', error, 'error');
         }
       }
     );

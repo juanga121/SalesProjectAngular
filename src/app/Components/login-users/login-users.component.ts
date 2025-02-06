@@ -4,6 +4,7 @@ import { AuthService } from '../../Services/authservices/auth.service';
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login-users',
@@ -49,7 +50,7 @@ export class LoginUsersComponent implements OnInit {
           }
         },
         error: (error) => {
-          alert(error);
+          Swal.fire('Error', error, 'error');
         }
       })
     }
