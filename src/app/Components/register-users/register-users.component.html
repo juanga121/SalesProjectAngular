@@ -11,17 +11,42 @@
                 </option>
             </select>
 
-            <input type="number" [formControl]="form.controls.document_identity" id="identity_number" name="identity_number" pattern="[0-9]{10}" placeholder="Numero de documento">
+            <div class="cont_input_and_error">
+                <input type="number" [formControl]="form.controls.document_identity" id="identity_number" name="identity_number" pattern="[0-9]{10}" placeholder="Numero de documento">
+                <div *ngIf="errors['Document_identity']" class="error-message">
+                    <p *ngFor="let error of errors['Document_identity']">{{ error }}</p>
+                </div>
+            </div>
         </div>
         <div class="cont_group">
-            <input type="text" [formControl]="form.controls.name" id="nameuser" name="nameuser" maxlength="50" placeholder="Nombre">
+            <div class="cont_input_and_error">
+                <input type="text" [formControl]="form.controls.name" id="nameuser" name="nameuser" maxlength="50" placeholder="Nombre">
+                <div *ngIf="errors['Name']" class="error-message">
+                    <p *ngFor="let error of errors['Name']">{{ error }}</p>
+                </div>
+            </div>
 
-            <input type="text" [formControl]="form.controls.last_name" id="lastname" name="lastname" maxlength="50" placeholder="Apellido">
+            <div class="cont_input_and_error">
+                <input type="text" [formControl]="form.controls.last_name" id="lastname" name="lastname" maxlength="50" placeholder="Apellido">
+                <div *ngIf="errors['Last_name']" class="error-message">
+                    <p *ngFor="let error of errors['Last_name']">{{ error }}</p>
+                </div>
+            </div>
         </div>
         <div class="cont_group">
-            <input type="email" [formControl]="form.controls.email" id="emailuser" name="emailuser" placeholder="Correo electronico">
+            <div class="cont_input_and_error">
+                <input type="email" [formControl]="form.controls.email" id="emailuser" name="emailuser" placeholder="Correo electronico">
+                <div *ngIf="errors['Email']" class="error-message">
+                    <p *ngFor="let error of errors['Email']">{{ error }}</p>
+                </div>
+            </div>
 
-            <input type="password" [formControl]="form.controls.password" id="password" name="password" minlength="8" maxlength="12" placeholder="Contraseña">
+            <div class="cont_input_and_error">
+                <input type="password" [formControl]="form.controls.password" id="password" name="password" minlength="8" maxlength="12" placeholder="Contraseña">
+                <div *ngIf="errors['Password']" class="error-message">
+                    <p *ngFor="let error of errors['Password']">{{ error }}</p>
+                </div>
+            </div>
         </div>
         
         <button type="submit">

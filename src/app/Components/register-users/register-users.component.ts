@@ -38,6 +38,8 @@ export class RegisterUsersComponent {
     password: ['']
   });
 
+  errors: { [key: string]: string[] } = {};
+
   saveChanges(){
     const formValues = this.form.value;
     const users = {
@@ -48,6 +50,8 @@ export class RegisterUsersComponent {
       email: formValues.email || '',
       password: formValues.password || ''
     };
+
+    this.errors = {};
     
     this.userService.addUser(users).subscribe({
         next: (response: any) => {
@@ -61,9 +65,25 @@ export class RegisterUsersComponent {
           }
         },
         error: (error) => {
-          Swal.fire('Error', error, 'error');
+          if (Array.isArray(error)) {
+            this.errors = this.groupErrorsByProperty(error);
+          } else {
+            Swal.fire('Error', error, 'error');
+          }
         }
       }
     );
+  }
+  private groupErrorsByProperty(errors: any[]): { [key: string]: string[] } {
+    const groupedErrors: { [key: string]: string[] } = {};
+
+    errors.forEach((error) => {
+      if (!groupedErrors[error.propertyName]) {
+        groupedErrors[error.propertyName] = [];
+      }
+      groupedErrors[error.propertyName].push(error.errorMessage);
+    });
+
+    return groupedErrors;
   }
 }

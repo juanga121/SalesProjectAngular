@@ -18,11 +18,12 @@ form#form_register{
     flex-direction: column;
     align-items: center;
     padding: 25px;
+    width: clamp(300px, 60%, 310px);
 }
 
     form#form_register .cont_group{
         display: flex;
-        flex-direction: column;   
+        flex-direction: column;
     }
 
     form#form_register h2{
@@ -35,6 +36,7 @@ form#form_register{
         margin: 10px 0;
         border: none;
         border-left: 2px solid;
+        width: 200px;
     }
 
     form#form_register input{
@@ -43,6 +45,22 @@ form#form_register{
         border: none;
         border-left: 2px solid;
     }
+
+    .cont_input_and_error{
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+    }
+
+        .cont_input_and_error .error-message{
+            margin-top: -9px;
+        }
+
+        .cont_input_and_error .error-message p{
+            font-size: 10px;
+            color: red;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
 
     form#form_register button{
         margin-top: 10px;
@@ -88,10 +106,7 @@ form#form_register{
     form#form_register .cont_group{
         flex-direction: row;
         justify-content: space-between;
-    }
-
-    form#form_register select{
-        width: 185px;
+        align-items: center;
     }
 
     form#form_register button{
