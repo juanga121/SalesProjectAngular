@@ -1,5 +1,14 @@
 <div id="cont_principal">
-    <div>
-        <h1>en mantenimiento</h1>
-    </div>
+    <section *ngFor="let ticket of listTickets">
+        <article>
+            <h2>{{ticket.name}}</h2>
+            <p>{{ticket.description}}</p>
+            <p>{{ticket.quantity}}</p>
+            <p>{{ticket.price}}</p>
+            <p>{{ticket.state}}</p>
+            <p>{{ticket.event_date}}</p>
+            <p>{{ticket.event_location}}</p>
+            <p>{{ticket.event_time}}</p>
+        </article>
+    </section>
 </div>

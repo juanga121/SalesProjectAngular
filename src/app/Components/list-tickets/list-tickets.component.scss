@@ -3,17 +3,3 @@
     margin: 0;
     box-sizing: border-box;
 }
-
-div#cont_principal{
-    background: linear-gradient(to top, #123463 50%, white 50%);
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-div#cont_principal div{
-    background-color: #D9D9D9;
-    padding: 100px;
-    border-radius: 20px;
-}
