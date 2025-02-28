@@ -21,13 +21,17 @@ export class ListUsersComponent implements OnInit, OnDestroy{
     @Inject(DOCUMENT) private document: Document) {}
 
   ngOnInit(): void {
-    this.serviceUsers.listUsers().subscribe(users => {
-      this.listUsers = users;
-    });
+    this.getUsers();
 
     this.render.setStyle(this.document.body, 'overflow', 'auto');
 
     this.handleMediaQueryChange();
+  }
+
+  getUsers(){
+    this.serviceUsers.listUsers().subscribe(users => {
+      this.listUsers = users;
+    });
   }
 
   handleMediaQueryChange(): void {

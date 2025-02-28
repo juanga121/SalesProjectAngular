@@ -1,14 +1,33 @@
-<div id="cont_principal">
+<div id="super_container">
+    <header>
+        <div id="cont_header">
+            <figure id="cont_logo">
+                <img src="../../../assets/boleto.png">
+                <p>Ticketazo</p>
+            </figure>
+            <figure id="cont_add" routerLink="/Add-tickets">
+                <img src="../../../assets/agregar.png">
+                <p>Agregar ticket</p>
+            </figure>
+            <figure id="cont_goout" routerLink="/login">
+                <img src="../../../assets/cerrar-sesion.png">
+                <p>Cerrar sesion</p>
+            </figure>
+        </div>
+    </header>
     <section *ngFor="let ticket of listTickets">
         <article>
             <h2>{{ticket.name}}</h2>
             <p>{{ticket.description}}</p>
             <p>{{ticket.quantity}}</p>
             <p>{{ticket.price}}</p>
-            <p>{{ticket.state}}</p>
             <p>{{ticket.event_date}}</p>
             <p>{{ticket.event_location}}</p>
             <p>{{ticket.event_time}}</p>
+            <p>{{ticket.state}}</p>
+
+            <button>Editar</button>
+            <button>Eliminar</button>
         </article>
     </section>
 </div>

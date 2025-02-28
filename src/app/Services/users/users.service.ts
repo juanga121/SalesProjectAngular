@@ -14,7 +14,7 @@ export class UsersService {
 
   constructor(private http: HttpClient) { }
 
-  addUser(user: Users): Observable<Users | Error>{
+  addUser(user: Users): Observable<Users>{
     return this.http.post<Users>(this.apiUrl + '/api/Users/AddUsers', user)
   }
 
