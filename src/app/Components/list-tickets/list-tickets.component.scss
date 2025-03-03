@@ -7,3 +7,54 @@
 img{
     width: 100px;
 }
+
+header div#cont_header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #123463;
+    color: #FFC90E;
+    padding: 12px;
+    margin-bottom: 10px;
+}
+
+    header div#cont_header figure#cont_logo{
+        display: flex;
+        align-items: center;
+        font-size: 20px;
+    }
+
+    header div#cont_header figure#cont_logo img{
+        width: 70px;
+    }
+
+    header div#cont_header figure#cont_add{
+        background-color: #123463;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        padding: 10px;
+        border-radius: 50px;
+        cursor: pointer;
+    }
+        header div#cont_header figure#cont_add img{
+            width: 50px;
+            margin: 8px;
+        }
+        header div#cont_header figure#cont_add p{
+            display: none;
+        }
+
+        header div#cont_header figure#cont_goout{
+            cursor: pointer;
+        }    
+        header div#cont_header figure#cont_goout img{
+            width: 40px;
+        }
+        header div#cont_header figure#cont_goout p{
+            display: none;
+        }
+
+@media screen and (min-width: 1000px){
+    
+}

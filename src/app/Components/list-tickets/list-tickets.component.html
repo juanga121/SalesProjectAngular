@@ -5,7 +5,7 @@
                 <img src="../../../assets/boleto.png">
                 <p>Ticketazo</p>
             </figure>
-            <figure id="cont_add" routerLink="/Add-tickets">
+            <figure id="cont_add" routerLink="/listTickets/Add-tickets">
                 <img src="../../../assets/agregar.png">
                 <p>Agregar ticket</p>
             </figure>
@@ -24,10 +24,9 @@
             <p>{{ticket.event_date}}</p>
             <p>{{ticket.event_location}}</p>
             <p>{{ticket.event_time}}</p>
-            <p>{{ticket.state}}</p>
 
-            <button>Editar</button>
-            <button>Eliminar</button>
+            <button [routerLink]="['/listTickets/Edit-tickets', ticket.id]">Editar</button>
+            <button (click)="deleteTicket(ticket.id!)">Eliminar</button>
         </article>
     </section>
 </div>

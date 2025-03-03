@@ -23,7 +23,11 @@ export class TicketsService {
   }
 
   editTicket(ticket: Tickets): Observable<Tickets>{
-    return this.http.put<Tickets>(this.apiUrl + '/api/Tickets/', ticket)
+    return this.http.put<Tickets>(this.apiUrl + '/api/Tickets/' + ticket.id, ticket)
+  }
+
+  getTicketsById(id: string): Observable<Tickets>{
+    return this.http.get<Tickets>(this.apiUrl + '/api/Tickets/' + id)
   }
 
   deleteTicket(id: string): Observable<Tickets>{

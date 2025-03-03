@@ -45,10 +45,10 @@ export class RegisterUsersComponent {
     const users = {
       identity_type: Number(formValues.identity_type),
       document_identity: Number(formValues.document_identity),
-      name: formValues.name || '',
-      last_name: formValues.last_name || '',
-      email: formValues.email || '',
-      password: formValues.password || ''
+      name: formValues.name!,
+      last_name: formValues.last_name!,
+      email: formValues.email!,
+      password: formValues.password!
     };
 
     this.errors = {};

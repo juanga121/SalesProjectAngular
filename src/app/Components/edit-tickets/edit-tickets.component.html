@@ -1,0 +1,34 @@
+<div id="cont_principal">
+    <form [formGroup]="form" (ngSubmit)="saveChanges()" id="form_register">
+        <h2>Editar ticket</h2>
+
+        <input [formControl]="form.controls.name" type="text" id="ticket_name" name="ticket_name" placeholder="Nombre del ticket">
+        <input [formControl]="form.controls.description" type="text" id="ticket_description" name="ticket_description" placeholder="Descripcion del ticket">
+        <input [formControl]="form.controls.price" type="number" id="ticket_price" name="ticket_price" placeholder="Precio del ticket">
+        <input [formControl]="form.controls.quantity" type="number" id="ticket_quantity" name="ticket_quantity" placeholder="Cantidad de tickets">
+        <input [formControl]="form.controls.event_date" type="date" id="ticket_start_date" name="ticket_start_date" placeholder="Fecha de evento">
+        <input [formControl]="form.controls.event_location" type="text" id="event_location" name="event_location" placeholder="Lugar de evento">
+        <input [formControl]="form.controls.event_time" type="time" id="ticket_start_time" name="ticket_start_time" placeholder="Hora de inicio">
+
+        <button type="submit">Agregar</button>
+    </form>
+
+    <div *ngIf="errors['Name']" class="error-message">
+        <p *ngFor="let error of errors['Name']">{{ error }}</p>
+    </div>
+    <div *ngIf="errors['Description']" class="error-message">
+        <p *ngFor="let error of errors['Description']">{{ error }}</p>
+    </div>
+    <div *ngIf="errors['Quantity']" class="error-message">
+        <p *ngFor="let error of errors['Quantity']">{{ error }}</p>
+    </div>
+    <div *ngIf="errors['Price']" class="error-message">
+        <p *ngFor="let error of errors['Price']">{{ error }}</p>
+    </div>
+    <div *ngIf="errors['Event_date']" class="error-message">
+        <p *ngFor="let error of errors['Event_date']">{{ error }}</p>
+    </div>
+    <div *ngIf="errors['Event_location']" class="error-message">
+        <p *ngFor="let error of errors['Event_location']">{{ error }}</p>
+    </div>
+</div>
