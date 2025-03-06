@@ -17,6 +17,8 @@ export class EditTicketsComponent implements OnInit {
     ticketService = inject(TicketsService)
     router = inject(Router)
     route = inject(ActivatedRoute)
+
+    selectedFile!: File;
   
     form = this.formBuilder.group({
       name: [''],
@@ -25,14 +27,19 @@ export class EditTicketsComponent implements OnInit {
       price: [''],
       event_date: [''],
       event_location: [''],
-      event_time: ['']
+      event_time: [''],
+      imageUrl: ['']
     });
   
     errors: { [key: string]: string[] } = {};
     ticketId: string = '';
 
+    onFileSelected(event: any) {
+      this.selectedFile = event.target.files[0];
+    }
+
     ngOnInit(): void {
-      this.ticketId = this.route.snapshot.paramMap.get('id') || '';
+      this.ticketId = this.route.snapshot.paramMap.get('id')!;
       
       this.ticketService.getTicketsById(this.ticketId).subscribe({
           next: (response: any) => {
@@ -43,7 +50,8 @@ export class EditTicketsComponent implements OnInit {
                   price: response.price,
                   event_date: response.event_date,
                   event_location: response.event_location,
-                  event_time: response.event_time
+                  event_time: response.event_time,
+                  imageUrl: response.imageUrl
               });
           },
           error: (error) => {
@@ -55,20 +63,22 @@ export class EditTicketsComponent implements OnInit {
   
     saveChanges(){
       const formValues = this.form.value;
-      const ticket = {
-        id: this.ticketId,
-        name: formValues.name!,
-        description: formValues.description!,
-        quantity: Number(formValues.quantity),
-        price: Number(formValues.price),
-        event_date: formValues.event_date!,
-        event_location: formValues.event_location!,
-        event_time: formValues.event_time!,
-      };
-  
+      const ticket = new FormData();
+      ticket.append('Name', formValues.name!);
+      ticket.append('Description', formValues.description!);
+      ticket.append('Quantity', formValues.quantity!);
+      ticket.append('Price', formValues.price!);
+      ticket.append('Event_date', formValues.event_date!);
+      ticket.append('Event_location', formValues.event_location!);
+      ticket.append('Event_time', formValues.event_time!);
+      
+      if (this.selectedFile) {
+        ticket.append('formFile', this.selectedFile);
+      }
+
       this.errors = {};
   
-      this.ticketService.editTicket(ticket).subscribe({
+      this.ticketService.editTicket(this.ticketId ,ticket).subscribe({
           next: (response: any) => {
             Swal.fire('Ticket actualizado', response.message, 'success');
             this.router.navigate(['/listTickets']);

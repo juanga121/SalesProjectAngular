@@ -17,6 +17,8 @@ export class AddTicketsComponent {
   ticketService = inject(TicketsService)
   router = inject(Router)
 
+  selectedFile!: File;
+
   formaDate() {
     const actualDate = new Date();
     const formattedDate = actualDate.toISOString().split('T')[0];
@@ -24,7 +26,7 @@ export class AddTicketsComponent {
   }
 
   form = this.formBuilder.group({
-    name: [],
+    name: [''],
     description: [''],
     quantity: [''],
     price: [''],
@@ -34,22 +36,29 @@ export class AddTicketsComponent {
   });
 
   errors: { [key: string]: string[] } = {};
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
+  }
 
   saveChanges(){
     const formValues = this.form.value;
-    const ticket = {
-      name: formValues.name || '',
-      description: formValues.description || '',
-      quantity: Number(formValues.quantity) || 0,
-      price: Number(formValues.price) || 0,
-      event_date: formValues.event_date || '',
-      event_location: formValues.event_location || '',
-      event_time: formValues.event_time || '',
-    };
+
+    const tickets = new FormData();
+    tickets.append('Name', formValues.name!);
+    tickets.append('Description', formValues.description!);
+    tickets.append('Quantity', formValues.quantity!);
+    tickets.append('Price', formValues.price!);
+    tickets.append('Event_date', formValues.event_date!);
+    tickets.append('Event_location', formValues.event_location!);
+    tickets.append('Event_time', formValues.event_time!);
+
+    if (this.selectedFile) {
+      tickets.append('formFile', this.selectedFile);
+    }
 
     this.errors = {};
 
-    this.ticketService.addTicket(ticket).subscribe({
+    this.ticketService.addTicket(tickets).subscribe({
         next: (response: any) => {
           Swal.fire('Ticket registrado', response.message, 'success');
           this.router.navigate(['/listTickets']);

@@ -13,7 +13,7 @@ export class TicketsService {
   
   constructor(private http: HttpClient) { }
 
-  addTicket(ticket: Tickets): Observable<Tickets>{
+  addTicket(ticket: FormData): Observable<Tickets>{
     return this.http.post<Tickets>(this.apiUrl + '/api/Tickets/AddTickets', ticket)
   }
 
@@ -22,8 +22,8 @@ export class TicketsService {
     return this.http.get<Tickets[]>(this.apiUrl + '/api/Tickets/ListTickets');
   }
 
-  editTicket(ticket: Tickets): Observable<Tickets>{
-    return this.http.put<Tickets>(this.apiUrl + '/api/Tickets/' + ticket.id, ticket)
+  editTicket(ticketId: string ,ticket: FormData): Observable<Tickets>{
+    return this.http.put<Tickets>(this.apiUrl + '/api/Tickets/' + ticketId, ticket)
   }
 
   getTicketsById(id: string): Observable<Tickets>{

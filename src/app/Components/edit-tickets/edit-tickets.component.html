@@ -9,6 +9,7 @@
         <input [formControl]="form.controls.event_date" type="date" id="ticket_start_date" name="ticket_start_date" placeholder="Fecha de evento">
         <input [formControl]="form.controls.event_location" type="text" id="event_location" name="event_location" placeholder="Lugar de evento">
         <input [formControl]="form.controls.event_time" type="time" id="ticket_start_time" name="ticket_start_time" placeholder="Hora de inicio">
+        <input (change)="onFileSelected($event)" type="file" id="ticket_image" name="ticket_image">
 
         <button type="submit">Agregar</button>
     </form>

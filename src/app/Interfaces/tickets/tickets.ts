@@ -8,6 +8,7 @@ export interface Tickets {
     event_location : string;
     event_time : string;
     state? : TicketsState;
+    imageUrl? : string;
 }
 
 export enum TicketsState

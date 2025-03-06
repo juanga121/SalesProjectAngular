@@ -17,6 +17,7 @@
     </header>
     <section *ngFor="let ticket of listTickets">
         <article>
+            <p>{{ticket.id}}</p>
             <h2>{{ticket.name}}</h2>
             <p>{{ticket.description}}</p>
             <p>{{ticket.quantity}}</p>
@@ -24,7 +25,7 @@
             <p>{{ticket.event_date}}</p>
             <p>{{ticket.event_location}}</p>
             <p>{{ticket.event_time}}</p>
-
+            <img [src]="ticket.imageUrl" alt="ticket image">
             <button [routerLink]="['/listTickets/Edit-tickets', ticket.id]">Editar</button>
             <button (click)="deleteTicket(ticket.id!)">Eliminar</button>
         </article>
