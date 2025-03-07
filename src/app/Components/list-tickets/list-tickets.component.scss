@@ -56,5 +56,46 @@ header div#cont_header{
         }
 
 @media screen and (min-width: 1000px){
-    
+    div#super_container{
+        display: flex;
+        overflow: hidden;
+    }
+
+        header div#cont_header{
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+        }
+        header div#cont_header figure#cont_goout{
+            display: flex;
+            align-items: center;
+            width: 100%;
+            justify-content: space-evenly;
+        }
+
+        header div#cont_header figure#cont_goout p{
+            display: flex;
+            font-size: 15px;
+        }
+        header div#cont_header figure#cont_goout img{
+            width: 35px;
+        }
+
+        
+        header div#cont_header figure#cont_add{
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            width: 100%;
+            position: relative;
+            padding: 0;
+
+        }
+        header div#cont_header figure#cont_add p{
+            display: flex;
+            font-size: 15px;
+        }
+        header div#cont_header figure#cont_add img{
+            width: 35px;
+        }
 }

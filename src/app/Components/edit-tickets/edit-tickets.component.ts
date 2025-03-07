@@ -74,7 +74,11 @@ export class EditTicketsComponent implements OnInit {
       
       if (this.selectedFile) {
         ticket.append('formFile', this.selectedFile);
+      }else{
+        ticket.append('ImageUrl', formValues.imageUrl!);
       }
+
+      console.log(ticket);
 
       this.errors = {};
   

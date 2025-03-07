@@ -15,19 +15,24 @@
             </figure>
         </div>
     </header>
-    <section *ngFor="let ticket of listTickets">
-        <article>
-            <p>{{ticket.id}}</p>
+    <section id="cont_body">
+        <article id="cont_ticket" *ngFor="let ticket of listTickets">
+            <img [src]="ticket.imageUrl" alt="ticket image">
             <h2>{{ticket.name}}</h2>
             <p>{{ticket.description}}</p>
-            <p>{{ticket.quantity}}</p>
-            <p>{{ticket.price}}</p>
-            <p>{{ticket.event_date}}</p>
+            <div class="info_container">
+                <p>{{ticket.quantity}}</p>
+                <p>{{ticket.price}}</p>
+            </div>
             <p>{{ticket.event_location}}</p>
-            <p>{{ticket.event_time}}</p>
-            <img [src]="ticket.imageUrl" alt="ticket image">
-            <button [routerLink]="['/listTickets/Edit-tickets', ticket.id]">Editar</button>
-            <button (click)="deleteTicket(ticket.id!)">Eliminar</button>
+            <div class="info_container">
+                <p>{{ticket.event_date}}</p>
+                <p>{{ticket.event_time}}</p>
+            </div>
+            <div id="cont_sub_menu_actions">
+                <button [routerLink]="['/listTickets/Edit-tickets', ticket.id]">Editar</button>
+                <button (click)="deleteTicket(ticket.id!)">Eliminar</button>
+            </div>
         </article>
     </section>
 </div>
