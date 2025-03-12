@@ -1,8 +1,10 @@
-import { CommonModule} from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { CommonModule, DOCUMENT} from '@angular/common';
+import { Component, Inject, inject, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { Tickets } from '../../Interfaces/tickets/tickets';
 import { TicketsService } from '../../Services/tickets/tickets.service';
 import { Router, RouterLink } from '@angular/router';
+import {MatIconModule} from '@angular/material/icon';
+
 import Swal from 'sweetalert2';
 
 @Component({
@@ -12,13 +14,11 @@ import Swal from 'sweetalert2';
   templateUrl: './list-tickets.component.html',
   styleUrl: './list-tickets.component.scss'
 })
-export class ListTicketsComponent implements OnInit {
+export class ListTicketsComponent implements OnInit{
   listTickets?: Tickets[];
   router = inject(Router);
 
-  constructor(
-    private serviceTickets: TicketsService,
-  ) {}
+  constructor(private serviceTickets: TicketsService) {}
 
   ngOnInit(): void {
     this.getTickets();

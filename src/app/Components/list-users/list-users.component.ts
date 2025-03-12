@@ -11,57 +11,18 @@ import { RouterLink } from '@angular/router';
   templateUrl: './list-users.component.html',
   styleUrls: ['./list-users.component.scss']
 })
-export class ListUsersComponent implements OnInit, OnDestroy{
+export class ListUsersComponent implements OnInit{
   listUsers?: Users[];
-  private mediaQueryListener!: () => void;
 
-  constructor(
-    private serviceUsers: UsersService,
-    private render: Renderer2, 
-    @Inject(DOCUMENT) private document: Document) {}
+  constructor(private serviceUsers: UsersService) {}
 
   ngOnInit(): void {
     this.getUsers();
-
-    this.render.setStyle(this.document.body, 'overflow', 'auto');
-
-    this.handleMediaQueryChange();
   }
 
   getUsers(){
     this.serviceUsers.listUsers().subscribe(users => {
       this.listUsers = users;
     });
-  }
-
-  handleMediaQueryChange(): void {
-    const mediaQuery = window.matchMedia('(min-width: 1000px)');
-
-    const ApplyOverFlow = (matches: boolean) => {
-      if (matches) {
-        this.render.setStyle(this.document.body, 'overflow', 'hidden');
-      } else {
-        this.render.setStyle(this.document.body, 'overflow', 'auto');
-      }
-    }
-
-    ApplyOverFlow(mediaQuery.matches);
-
-    const handleMediaChange = (event: MediaQueryListEvent) => {
-      ApplyOverFlow(event.matches);
-    };
-    
-    mediaQuery.addEventListener('change', handleMediaChange);
-
-    this.mediaQueryListener = () =>{
-      mediaQuery.removeEventListener('change', handleMediaChange);
-    }
-  }
-
-  ngOnDestroy(): void {
-    this.render.removeStyle(this.document.body, 'overflow');
-    if (this.mediaQueryListener) {
-      this.mediaQueryListener();
-    }
   }
 }

@@ -1,0 +1,211 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img{
+    width: 50px;
+}
+
+header div#cont_header{
+    background-color: #123463;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: fixed;
+    padding: 10px;
+}
+
+    header div#cont_header figure#cont_logo{
+        display: flex;
+        align-items: center;
+        font-size: 18px;
+        gap: 10px;
+    }
+
+        header div#cont_header figure#cont_logo p{
+            margin: 0;
+        }
+
+    div#cont_principal_table{
+        display: none;
+    }
+
+    header div#cont_header figure#cont_logo img{
+        width: 70px;
+    }
+
+    header div#cont_header figure#cont_add{
+        background-color: #123463;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        padding: 10px;
+        border-radius: 50px;
+        cursor: pointer;
+    }
+
+    header div#cont_header figure#cont_add img{
+        width: 50px;
+        margin: 8px;
+    }
+    header div#cont_header figure#cont_add img{
+        width: 40px;
+    }
+    header div#cont_header figure#cont_add p{
+        display: none;
+    }
+    header div#cont_header figure#cont_goout p{
+        display: none;
+    }
+
+div#cont_form{
+    display: flex;
+    justify-content: center;
+    padding-top: 100px;
+}
+    form#form_register{
+        background-color: #D9D9D9;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 25px;
+        width: clamp(300px, 60%, 310px);
+    }
+    form#form_register .cont_group{
+        display: flex;
+        flex-direction: column;
+    }
+
+    form#form_register h2{
+        margin-bottom: 15px;
+        font-weight: normal;
+    }
+
+    form#form_register select{
+        padding: 7px;
+        margin: 10px 0;
+        border: none;
+        border-left: 2px solid;
+        width: 200px;
+    }
+
+    form#form_register input{
+        padding: 7px;
+        margin: 10px 0;
+        border: none;
+        border-left: 2px solid;
+        background-color: white;
+    }
+
+    .cont_input_and_error{
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+    }
+
+        .cont_input_and_error .error-message{
+            margin-top: -9px;
+        }
+
+        .cont_input_and_error .error-message p{
+            font-size: 10px;
+            color: red;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+    form#form_register button{
+        margin-top: 10px;
+        padding: 7px 25px;
+        background-color: #FFC90E;
+        border: 2px solid black;
+        position: relative;
+        overflow: hidden;
+        transition: linear 0.5s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+        form#form_register button:hover{
+            box-shadow: inset 400px 0 0 0 #123463;
+            color: white;
+        }
+
+        form#form_register button img{
+            width: 20px;
+            position: absolute;
+            left: -22px;
+            transition: transform 0.2s linear;
+        }
+
+        form#form_register button:hover img{
+            transform: translateX(180px);
+        }
+
+@media screen and (min-width: 1000px){
+    #cont_options{
+        display: flex;
+        align-items: center;
+    }
+
+    header div#cont_header figure#cont_add p{
+        display: block;
+        margin: 0 20px 0 0;
+    }
+    header div#cont_header figure#cont_goout p{
+        display: block;
+        margin: 0 0 0 20px;
+        cursor: pointer;
+    }
+
+    header div#cont_header figure#cont_add p:hover,
+    header div#cont_header figure#cont_goout p:hover{
+        color: #FFC90E;
+    }
+
+    header div#cont_header figure#cont_add{
+        position: relative;
+        background-color: none;
+        padding: 0px;
+    }
+
+    #cont_options figure img{
+        display: none;
+    }
+
+    form#form_register{
+        align-items: normal;
+        width: clamp(430px, 60%, 520px);
+    }
+
+    form#form_register h2{
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    form#form_register .cont_group{
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    form#form_register button{
+        margin: 30px 140px 0;
+    }
+
+    #cont_img{
+        width: 100%;
+        display: flex;
+        justify-content: end;
+    }
+
+        #cont_img img{
+            width: 100%;
+            height: 140px;
+            object-fit: contain;
+        }
+}

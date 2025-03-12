@@ -2,37 +2,79 @@
     <header>
         <div id="cont_header">
             <figure id="cont_logo">
-                <img src="../../../assets/boleto.png">
+                <img src="../../../assets/boleto (2).png">
                 <p>Ticketazo</p>
             </figure>
+            <div id="cont_options">
             <figure id="cont_add" routerLink="/listTickets/Add-tickets">
-                <img src="../../../assets/agregar.png">
+                <img src="../../../assets/anadir.png">
                 <p>Agregar ticket</p>
             </figure>
             <figure id="cont_goout" routerLink="/login">
-                <img src="../../../assets/cerrar-sesion.png">
+                <img src="../../../assets/puerta-de-salida.png">
                 <p>Cerrar sesion</p>
             </figure>
+            </div>
         </div>
     </header>
-    <section id="cont_body">
-        <article id="cont_ticket" *ngFor="let ticket of listTickets">
-            <img [src]="ticket.imageUrl" alt="ticket image">
-            <h2>{{ticket.name}}</h2>
-            <p>{{ticket.description}}</p>
-            <div class="info_container">
-                <p>{{ticket.quantity}}</p>
-                <p>{{ticket.price}}</p>
-            </div>
-            <p>{{ticket.event_location}}</p>
-            <div class="info_container">
-                <p>{{ticket.event_date}}</p>
-                <p>{{ticket.event_time}}</p>
-            </div>
-            <div id="cont_sub_menu_actions">
-                <button [routerLink]="['/listTickets/Edit-tickets', ticket.id]">Editar</button>
-                <button (click)="deleteTicket(ticket.id!)">Eliminar</button>
-            </div>
-        </article>
-    </section>
+    <div id="cont_principal_responsive">
+        <section *ngFor="let ticket of listTickets">
+            <article id="cont_user">
+                <img [src]="ticket.imageUrl" alt="{{ticket.name}}">
+                <p>{{ ticket.name }}</p>
+                <p data-label="Descripcion">{{ ticket.description}}</p>
+                <p data-label="Cantidad tickets">{{ ticket.quantity }}</p>
+                <p data-label="Precio por ticket">{{ ticket.price }}</p>
+                <p data-label="Fecha evento">{{ticket.event_date}}</p>
+                <p data-label="Hora evento">{{ticket.event_time}}</p>
+                <p data-label="Ubicacion">{{ticket.event_location}}</p>
+                <div id="cont_actions">
+                    <button [routerLink]="'Edit-tickets/' + ticket.id">
+                        <span class="material-icons">edit</span>
+                    </button>
+                    <button *ngIf="ticket.id" (click)="deleteTicket(ticket.id!)" >
+                        <span class="material-icons">delete_outline</span>
+                    </button>
+                </div>
+            </article>
+        </section>
+    </div>
+
+    <div id="cont_principal_table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Imagen</th>
+                    <th>Nombre</th>
+                    <th>Descripcion</th>
+                    <th>Cantidad tickets</th>
+                    <th>Precio por ticket</th>
+                    <th>Fecha evento</th>
+                    <th>Hora evento</th>
+                    <th>Ubicacion</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let ticket of listTickets">
+                    <td><img [src]="ticket.imageUrl" alt=""></td>
+                    <td>{{ ticket.name }}</td>
+                    <td>{{ ticket.description }}</td>
+                    <td>{{ ticket.quantity}}</td>
+                    <td>{{ ticket.price }}</td>
+                    <td>{{ ticket.event_date }}</td>
+                    <td>{{ ticket.event_time }}</td>
+                    <td>{{ ticket.event_location }}</td>
+                    <td id="cont_actions">
+                        <button [routerLink]="'Edit-tickets/' + ticket.id">
+                            <span class="material-icons">edit</span>
+                        </button>
+                        <button *ngIf="ticket.id" (click)="deleteTicket(ticket.id!)" >
+                            <span class="material-icons">delete_outline</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
