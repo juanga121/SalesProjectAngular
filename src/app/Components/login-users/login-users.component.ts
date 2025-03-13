@@ -32,8 +32,8 @@ export class LoginUsersComponent implements OnInit {
     if(this.form.valid){
       const formValues = this.form.value;
       const users = {
-        email: formValues.email || '',
-        password: formValues.password || ''
+        email: formValues.email!,
+        password: formValues.password!
       }
       this.authService.login(users).subscribe({
         next: (response) => {
@@ -46,7 +46,7 @@ export class LoginUsersComponent implements OnInit {
           }else if(typeUser === 'Administrador'){
             this.router.navigate(['/listTickets']);
           }else if(typeUser === 'Consumidor'){
-            this.router.navigate(['/listTickets']);
+            this.router.navigate(['/login']);
           }
         },
         error: (error) => {

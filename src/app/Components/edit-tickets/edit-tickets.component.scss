@@ -209,3 +209,11 @@ div#cont_form{
             object-fit: contain;
         }
 }
+
+@media screen and (min-height: 780px){
+    div#cont_form{
+        padding-top: 0;
+        height: 100vh;
+        align-items: center;
+    }
+}

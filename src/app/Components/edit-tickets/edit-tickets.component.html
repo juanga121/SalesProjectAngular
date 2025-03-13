@@ -6,9 +6,9 @@
                 <p>Ticketazo</p>
             </figure>
             <div id="cont_options">
-            <figure id="cont_add" routerLink="/listTickets/Add-tickets">
-                <img src="../../../assets/anadir.png">
-                <p>Agregar ticket</p>
+            <figure id="cont_add" routerLink="/listTickets">
+                <img src="../../../assets/portapapeles.png">
+                <p>Listado de tickets</p>
             </figure>
             <figure id="cont_goout" routerLink="/login">
                 <img src="../../../assets/puerta-de-salida.png">
@@ -76,7 +76,10 @@
                 <img [src]="form.value.imageUrl" alt="ticket image">
             </div>
 
-            <button type="submit">Actualizar</button>
+            <button type="submit">
+                Actualizar
+                <img src="../../../assets/confirmacion.png" alt="icono">
+            </button>
         </form>
     </div>
 </div>
