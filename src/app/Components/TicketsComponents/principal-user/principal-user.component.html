@@ -1,0 +1,35 @@
+<div id="cont_principal">
+    <header>
+        <div id="cont_header">
+            <figure id="cont_logo">
+                <img src="../../../assets/boleto (2).png">
+                <p>Ticketazo</p>
+            </figure>
+            <figure id="cont_goout" routerLink="/login">
+                <img src="../../../assets/puerta-de-salida.png">
+                <p>Cerrar sesion</p>
+            </figure>
+        </div>
+    </header>
+    <div id="cont_first">
+        <img src="../../../../assets/colin-lloyd-AOKgCxezZjY-unsplash.jpg" alt="Imagendeevento">
+        <div id="cont_data">
+            <h2>Recientes</h2>
+            <article *ngFor="let ticket of listTickets">
+            <img [src]="ticket.imageUrl" alt="{{ticket.name}}">
+            <div id="cont_info">
+                <p>{{ticket.name}}</p>
+                <p>{{ticket.event_date}}</p>
+            </div>
+            </article>
+        </div>
+    </div>
+    <div *ngFor="let ticket of listTickets">
+        <img [src]="ticket.imageUrl" alt="{{ticket.name}}">
+        <p>{{ticket.name}}</p>
+        <p>{{ticket.event_date}}</p>
+        <p>{{ticket.event_time}}</p>
+        <p>{{ticket.price}}</p>
+        <p>{{ticket.quantity}}</p>
+    </div>
+</div>

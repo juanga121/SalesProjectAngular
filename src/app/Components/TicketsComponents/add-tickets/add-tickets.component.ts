@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { TicketsService } from '../../Services/tickets/tickets.service';
+import { TicketsService } from '../../../Services/tickets/tickets.service';
 import { Router, RouterLink } from '@angular/router';
 import Swal from 'sweetalert2';
 import { CommonModule } from '@angular/common';

@@ -1,7 +1,7 @@
-import { CommonModule, DOCUMENT} from '@angular/common';
-import { Component, Inject, inject, OnDestroy, OnInit, Renderer2 } from '@angular/core';
-import { Tickets } from '../../Interfaces/tickets/tickets';
-import { TicketsService } from '../../Services/tickets/tickets.service';
+import { CommonModule} from '@angular/common';
+import { Component, inject, OnInit } from '@angular/core';
+import { Tickets } from '../../../Interfaces/tickets/tickets';
+import { TicketsService } from '../../../Services/tickets/tickets.service';
 import { Router, RouterLink } from '@angular/router';
 import {MatIconModule} from '@angular/material/icon';
 

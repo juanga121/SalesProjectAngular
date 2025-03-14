@@ -1,11 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { UserIdentityType } from '../../Interfaces/users/users';
-import { UsersService } from '../../Services/users/users.service';
+import { UserIdentityType } from '../../../Interfaces/users/users';
+import { UsersService } from '../../../Services/users/users.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { AuthService } from '../../Services/authservices/auth.service';
+import { AuthService } from '../../../Services/authservices/auth.service';
 import Swal from 'sweetalert2';
 
 @Component({

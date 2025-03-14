@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { AuthService } from '../../Services/authservices/auth.service';
+import { AuthService } from '../../../Services/authservices/auth.service';
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
@@ -46,7 +46,7 @@ export class LoginUsersComponent implements OnInit {
           }else if(typeUser === 'Administrador'){
             this.router.navigate(['/listTickets']);
           }else if(typeUser === 'Consumidor'){
-            this.router.navigate(['/login']);
+            this.router.navigate(['/PrincipalTickets']);
           }
         },
         error: (error) => {

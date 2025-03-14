@@ -2,7 +2,7 @@ import { Component, inject, Input, numberAttribute, OnInit } from '@angular/core
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Router, ActivatedRoute, RouterLink } from '@angular/router';
 import Swal from 'sweetalert2';
-import { TicketsService } from '../../Services/tickets/tickets.service';
+import { TicketsService } from '../../../Services/tickets/tickets.service';
 import { CommonModule } from '@angular/common';
 
 @Component({

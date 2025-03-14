@@ -1,0 +1,127 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img{
+    width: 100px;
+}
+
+header div#cont_header{
+    background-color: transparent;
+    transition: 0.5s;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: fixed;
+    z-index: 3;
+    font-weight: bolder;
+}
+
+header div#cont_header.bajo{
+    background-color: #123463;
+}
+
+    header div#cont_header figure#cont_logo{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 18px;
+    }
+
+        header div#cont_header figure#cont_logo img{
+            width: 70px;
+        }
+
+    header div#cont_header figure#cont_goout img{
+        width: 45px;
+    }
+
+        header div#cont_header figure#cont_goout p{
+            display: none;
+        }
+
+div#cont_first{
+    color: white;
+    height: 100vh;
+    position: relative;
+}
+
+    div#cont_first img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    div#cont_first::before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        z-index: 1;
+    }
+
+    
+
+    div#cont_first div#cont_data{
+        position: absolute;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        gap: 20px;
+        width: 100%;
+        height: 50%;
+        top: 30%;
+        padding: 10px;
+        font-size: 16px;
+        font-weight: bolder;
+        z-index: 2;
+    }
+
+        div#cont_first div#cont_data article{
+            position: relative;
+            width: 210px;
+            height: 300px;
+            border-radius: 10px;
+        }
+
+        div#cont_first div#cont_data article::before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 210px;
+            height: 300px;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+            border-radius: 10px;
+        }
+
+        div#cont_first div#cont_data img{
+            width: 210px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        div#cont_data div#cont_info{
+            position: absolute;
+            z-index: 2;
+            top: 0;
+            padding: 10px;
+        }
+
+        
+
+@media screen and (min-width: 1000px){
+    div#cont_first div#cont_data{
+        justify-content: center;
+    }
+}

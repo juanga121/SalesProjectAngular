@@ -1,6 +1,6 @@
 import { Component, Inject, inject, OnDestroy, OnInit, Renderer2 } from '@angular/core';
-import { UsersService } from '../../Services/users/users.service';
-import { Users } from '../../Interfaces/users/users';
+import { UsersService } from '../../../Services/users/users.service';
+import { Users } from '../../../Interfaces/users/users';
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
