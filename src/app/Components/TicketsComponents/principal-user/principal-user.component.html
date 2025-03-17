@@ -24,12 +24,28 @@
             </article>
         </div>
     </div>
-    <div *ngFor="let ticket of listTickets">
-        <img [src]="ticket.imageUrl" alt="{{ticket.name}}">
-        <p>{{ticket.name}}</p>
-        <p>{{ticket.event_date}}</p>
-        <p>{{ticket.event_time}}</p>
-        <p>{{ticket.price}}</p>
-        <p>{{ticket.quantity}}</p>
+    <div id="cont_cards">
+        <article *ngFor="let ticket of listTickets" (click)="openDialog(dialogTemplate, ticket.id!)">
+            <img [src]="ticket.imageUrl" alt="{{ticket.name}}">
+            <div>
+                <p>{{ticket.name}}</p>
+                <p>{{ticket.event_location}}</p>
+                <p>{{ticket.event_date}}</p>
+            </div>
+        </article>
+
+        <ng-template #dialogTemplate>
+            <div id="info_modal" *ngIf="listIdModal">
+                <img [src]="" alt="{{listIdModal.name}}">
+                <div id="cont_info">
+                    <p>{{listIdModal.name}}</p>
+                    <p>{{listIdModal.event_location}}</p>
+                    <p>{{listIdModal.event_date}}</p>
+                    <p>{{listIdModal.event_time}}</p>
+                    <p>{{listIdModal.description}}</p>
+                    <p>{{listIdModal.price}}</p>
+                </div>
+            </div>
+        </ng-template>
     </div>
 </div>
