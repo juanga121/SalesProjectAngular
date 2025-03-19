@@ -5,6 +5,7 @@ import { Login } from '../../Interfaces/authinterfaces/login';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class AuthService {
   private apiUrl = environment.apiUrl;
   private jwtHelper = new JwtHelperService();
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private dialog: MatDialog) { }
 
   login(user: Login): Observable<any> {
     return this.http.post(this.apiUrl + '/api/Login', user)
@@ -39,7 +40,8 @@ export class AuthService {
   }
 
   logout(): void {
-    localStorage.removeItem(this.tokenKey); //elimino el token localmente
+    this.dialog.closeAll();
+    localStorage.removeItem(this.tokenKey);
     this.router.navigate(['/login']);
   }
 

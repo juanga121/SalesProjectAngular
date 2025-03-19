@@ -4,6 +4,7 @@ import { TicketsService } from '../../../Services/tickets/tickets.service';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
+import {MatIconModule} from '@angular/material/icon';
 
 @Component({
   selector: 'app-principal-user',
@@ -16,6 +17,10 @@ export class PrincipalUserComponent implements OnInit {
   listTickets!: Tickets[];
   firstData?: Tickets[];
   listIdModal?: Tickets;
+
+  InitialCount = 1;
+
+  initialPrice? : number;
 
   constructor(private ticketsService: TicketsService, private dialog: MatDialog) { }
 
@@ -47,11 +52,27 @@ export class PrincipalUserComponent implements OnInit {
   openDialog(templateRef: any, ticketsId: string) {
     this.ticketsService.getTicketsById(ticketsId).subscribe(tickets => {
       this.listIdModal = tickets;
+      this.initialPrice = this.listIdModal?.price;
       this.dialog.open(templateRef, {
-        width: '95%',
-        height: '95%',
+        width: '90%',
+        height: '90%',
         data: {listIdModal: this.listIdModal}
       });
     });
+  }
+
+  Increment(){
+    this.InitialCount++;
+  }
+
+  Decrement(){
+    if (this.InitialCount > 1){
+      this.InitialCount--;
+    }
+  }
+
+  TotalPrice(): number{
+    var total = this.InitialCount * this.initialPrice!;
+    return total;
   }
 }

@@ -34,16 +34,32 @@
             </div>
         </article>
 
-        <ng-template #dialogTemplate>
+        <ng-template #dialogTemplate id="dialog">
             <div id="info_modal" *ngIf="listIdModal">
-                <img [src]="" alt="{{listIdModal.name}}">
+                <figure id="cont_img">
+                    <img [src]="listIdModal.imageUrl" alt="{{listIdModal.name}}">
+                </figure>
                 <div id="cont_info">
-                    <p>{{listIdModal.name}}</p>
-                    <p>{{listIdModal.event_location}}</p>
-                    <p>{{listIdModal.event_date}}</p>
-                    <p>{{listIdModal.event_time}}</p>
+                    <h2>{{listIdModal.name}}</h2>
                     <p>{{listIdModal.description}}</p>
-                    <p>{{listIdModal.price}}</p>
+                    <p><span>Precio x Ticket: </span>{{listIdModal.price | currency}}</p>
+                    <p><span>Ubicacion: </span>{{listIdModal.event_location}}</p>
+                    <p><span>Fecha del evento: </span>{{listIdModal.event_date}}</p>
+                    <p><span>Hora: </span>{{listIdModal.event_time}}</p>
+                    <p><span>Disponibles: </span>{{listIdModal.quantity | number}}</p>
+                    <div id="count_tickets">
+                        <div id="cont_buttons">
+                            <button (click)="Decrement()">
+                                <span class="material-icons">remove</span>
+                            </button>
+                            <input type="text" [value]="InitialCount">
+                            <button (click)="Increment()">
+                                <span class="material-icons">add</span>
+                            </button>
+                        </div>
+                        <span>{{TotalPrice() | currency}}</span>
+                    </div>
+                    <button id="bt_comprar">Comprar</button>
                 </div>
             </div>
         </ng-template>
