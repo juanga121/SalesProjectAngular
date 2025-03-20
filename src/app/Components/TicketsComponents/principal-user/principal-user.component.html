@@ -14,12 +14,11 @@
     <div id="cont_first">
         <img src="../../../../assets/colin-lloyd-AOKgCxezZjY-unsplash.jpg" alt="Imagendeevento">
         <div id="cont_data">
-            <h2>Recientes</h2>
-            <article *ngFor="let ticket of listTickets">
+            <h2>Agregados recientemente</h2>
+            <article *ngFor="let ticket of listTickets" (click)="openDialog(dialogTemplate, ticket.id!)">
             <img [src]="ticket.imageUrl" alt="{{ticket.name}}">
             <div id="cont_info">
                 <p>{{ticket.name}}</p>
-                <p>{{ticket.event_date}}</p>
             </div>
             </article>
         </div>
@@ -29,8 +28,6 @@
             <img [src]="ticket.imageUrl" alt="{{ticket.name}}">
             <div>
                 <p>{{ticket.name}}</p>
-                <p>{{ticket.event_location}}</p>
-                <p>{{ticket.event_date}}</p>
             </div>
         </article>
 
@@ -39,7 +36,7 @@
                 <figure id="cont_img">
                     <img [src]="listIdModal.imageUrl" alt="{{listIdModal.name}}">
                 </figure>
-                <div id="cont_info">
+                <div id="cont_infomodal">
                     <h2>{{listIdModal.name}}</h2>
                     <p>{{listIdModal.description}}</p>
                     <p><span>Precio x Ticket: </span>{{listIdModal.price | currency}}</p>
@@ -59,7 +56,9 @@
                         </div>
                         <span>{{TotalPrice() | currency}}</span>
                     </div>
-                    <button id="bt_comprar">Comprar</button>
+                    <div id="cont_buttonbuy">
+                        <button id="bt_comprar">Comprar</button>
+                    </div>
                 </div>
             </div>
         </ng-template>

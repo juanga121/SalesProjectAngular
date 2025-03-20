@@ -18,7 +18,6 @@ export class TicketsService {
   }
 
   listTickets(): Observable<Tickets[]> {
-    console.log('Listando tickets');
     return this.http.get<Tickets[]>(this.apiUrl + '/api/Tickets/ListTickets');
   }
 

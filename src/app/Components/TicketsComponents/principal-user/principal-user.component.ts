@@ -53,9 +53,21 @@ export class PrincipalUserComponent implements OnInit {
     this.ticketsService.getTicketsById(ticketsId).subscribe(tickets => {
       this.listIdModal = tickets;
       this.initialPrice = this.listIdModal?.price;
+
+      const innerWidth = window.innerWidth;
+
+      let screeWith = '80%';
+      let screenHeight = '500px';
+
+      if (innerWidth < 840){
+        screeWith = '95%';
+      }else if (innerWidth >= 840){
+        screeWith = '70%';
+      }
+
       this.dialog.open(templateRef, {
-        width: '90%',
-        height: '90%',
+        width: screeWith,
+        height: screenHeight,
         data: {listIdModal: this.listIdModal}
       });
     });

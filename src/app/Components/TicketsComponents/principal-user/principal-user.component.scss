@@ -80,13 +80,14 @@ div#cont_first{
         height: 50%;
         top: 30%;
         padding: 10px;
-        font-size: 16px;
+        font-size: 18px;
         font-weight: bolder;
         z-index: 2;
     }
 
         div#cont_first div#cont_data article{
             position: relative;
+            cursor: pointer;
             width: 250px;
             height: 300px;
             border-radius: 10px;
@@ -99,7 +100,7 @@ div#cont_first{
             left: 0;
             width: 250px;
             height: 300px;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.7);
             z-index: 1;
             border-radius: 10px;
         }
@@ -110,11 +111,14 @@ div#cont_first{
             object-fit: cover;
             border-radius: 10px;
         }
+        div#cont_first div#cont_data h2{
+            font-weight: bold;
+        }
 
         div#cont_data div#cont_info{
             position: absolute;
             z-index: 2;
-            top: 0;
+            bottom: 0;
             padding: 10px;
         }
 
@@ -145,7 +149,7 @@ div#cont_cards{
         font-weight: bold;
         color: white;
         z-index: 2;
-        top: 0;
+        bottom: 0;
     }
 
     div#cont_cards article::before{
@@ -156,7 +160,7 @@ div#cont_cards{
         border-radius: 10px;
         width: 250px;
         height: 300px;
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: rgba(0, 0, 0, 0.7);
         z-index: 1;
     }
 
@@ -183,23 +187,32 @@ div#cont_cards{
         object-fit: cover;
     }
 
-    div#cont_info{
+    div#cont_infomodal{
         padding: 10px;
+        display: grid;
     }
-    div#cont_info p{
+    div#cont_infomodal p{
         margin-top: 5px;
     }
 
-        div#cont_info p span{
+        div#cont_infomodal p span{
             font-weight: bold;
         }
 
-    div#cont_info button#bt_comprar{
-        background-color: #FFC90E;
-        padding: 6px;
-        border: 2px solid black;
+    #cont_buttonbuy{
         display: flex;
-        margin: 20px auto;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+    }
+
+    div#cont_infomodal button#bt_comprar{
+        background-color: #FFC90E;
+        padding: 8px;
+        font-size: 16px;
+        width: clamp(60px, 50%, 200px);
+        border: 2px solid black;
+        cursor: pointer;
     }
 
     #count_tickets{
@@ -208,10 +221,6 @@ div#cont_cards{
         gap: 10px;
         margin-top: 10px;
     }
-
-        #count_tickets span{
-            height: 100%;        
-        }
 
     #cont_buttons{
         display: flex;
@@ -262,8 +271,40 @@ div#cont_cards{
     header div#cont_header figure#cont_goout p:hover{
         color: #FFC90E;
     }
-}
 
+    #info_modal{
+        flex-direction: row;
+        overflow: hidden;
+    }
+
+    #info_modal figure{
+        width: 50%;
+        height: 100%;
+    }
+
+    #info_modal img{
+        height: 100%;
+        width: 100%;
+    }
+
+    div#cont_infomodal{
+        width: 50%;
+        overflow-y: auto;
+    }
+
+    #cont_buttonbuy{
+        margin-top: 40px;
+    }
+
+    #cont_buttons input{
+        width: 50px;
+        font-size: 18px;
+    }
+    #cont_buttons button span{
+        font-size: 30px;
+        width: 50px;
+    }
+}
 @media screen and (min-width: 1120px){
 
     div#cont_cards{

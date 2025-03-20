@@ -19,7 +19,6 @@ export class UsersService {
   }
 
   listUsers(): Observable<Users[]> {
-    console.log('Listando usuarios');
     return this.http.get<Users[]>(this.apiUrl + '/api/Users/ListUsers');
   }
 }
