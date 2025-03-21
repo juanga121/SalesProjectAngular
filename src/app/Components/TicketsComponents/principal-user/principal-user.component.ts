@@ -28,18 +28,19 @@ export class PrincipalUserComponent implements OnInit {
     this.listTicketsUserAll();
     this.listTicketsUserFilter();
     this.ControlHeader();
+    this.Carousel();
   }
 
   listTicketsUserAll(){
     this.ticketsService.listTickets().subscribe(tickets => {
       this.listTickets = tickets;
-    })
+    });
   }
 
   listTicketsUserFilter(){
     this.ticketsService.listTickets().subscribe(tickets => {
       this.firstData = tickets;
-    })
+    });
   }
 
   ControlHeader(){
@@ -73,6 +74,10 @@ export class PrincipalUserComponent implements OnInit {
     });
   }
 
+  closeDialog(){
+    this.dialog.closeAll();
+  }
+
   Increment(){
     this.InitialCount++;
   }
@@ -86,5 +91,54 @@ export class PrincipalUserComponent implements OnInit {
   TotalPrice(): number{
     var total = this.InitialCount * this.initialPrice!;
     return total;
+  }
+
+  Carousel(){
+    const carousel = document.querySelector('#cont_data');
+    const btoRight = document.querySelector('#bto_carru');
+    const btoLeft = document.querySelector('#bto_carru_left');
+
+    function removeBotons(){
+      btoLeft?.classList.remove('remove');
+      btoRight?.classList.remove('remove');
+
+      if (carousel){
+        if (carousel.scrollWidth <= carousel.clientWidth){
+          btoRight?.classList.add('remove');
+          btoLeft?.classList.add('remove');
+        }else{
+          if (carousel.scrollLeft === 0){
+            btoLeft?.classList.add('remove');
+          }else{
+            btoLeft?.classList.remove('remove');
+          }
+
+          if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth){
+            btoRight?.classList.add('remove');
+          }else{
+            btoRight?.classList.remove('remove');
+          }
+        }
+      }
+    }
+
+    setTimeout(removeBotons, 1000);
+    removeBotons();
+
+    btoRight?.addEventListener('click', () => {
+      carousel!.scrollBy({
+        left: carousel!.clientWidth,
+        behavior: 'smooth'
+      });
+    });
+
+    btoLeft?.addEventListener('click', () => {
+      carousel!.scrollBy({
+        left: -carousel!.clientWidth,
+        behavior: 'smooth'
+      });
+    });
+
+    carousel?.addEventListener('scroll', removeBotons);
   }
 }

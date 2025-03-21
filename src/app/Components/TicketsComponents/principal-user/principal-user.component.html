@@ -13,6 +13,8 @@
     </header>
     <div id="cont_first">
         <img src="../../../../assets/colin-lloyd-AOKgCxezZjY-unsplash.jpg" alt="Imagendeevento">
+        <button id="bto_carru"><span class="material-icons">arrow_forward_ios</span></button>
+        <button id="bto_carru_left"><span class="material-icons">arrow_back_ios_new</span></button>
         <div id="cont_data">
             <h2>Agregados recientemente</h2>
             <article *ngFor="let ticket of listTickets" (click)="openDialog(dialogTemplate, ticket.id!)">
@@ -37,6 +39,7 @@
                     <img [src]="listIdModal.imageUrl" alt="{{listIdModal.name}}">
                 </figure>
                 <div id="cont_infomodal">
+                    <span class="material-icons" id="close_modal" (click)="closeDialog()">close</span>
                     <h2>{{listIdModal.name}}</h2>
                     <p>{{listIdModal.description}}</p>
                     <p><span>Precio x Ticket: </span>{{listIdModal.price | currency}}</p>
