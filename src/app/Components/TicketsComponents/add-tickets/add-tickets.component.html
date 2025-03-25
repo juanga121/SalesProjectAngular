@@ -66,9 +66,15 @@
             <div class="cont_group">
                 <div class="cont_input_and_error">
                     <input [formControl]="form.controls.event_time" type="time" id="ticket_start_time" name="ticket_start_time" placeholder="Hora de inicio">
+                    <div *ngIf="errors['Event_time']" class="error-message">
+                        <p *ngFor="let error of errors['Event_time']">{{ error }}</p>
+                    </div>
                 </div>
                 <div class="cont_input_and_error">
                     <input (change)="onFileSelected($event)" type="file" id="ticket_image" name="ticket_image">
+                    <div *ngIf="errors['ImageUrl']" class="error-message">
+                        <p *ngFor="let error of errors['ImageUrl']">{{ error }}</p>
+                    </div>
                 </div>
             </div>
             <button type="submit">
