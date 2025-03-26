@@ -17,7 +17,7 @@
         <button id="bto_carru_left"><span class="material-icons">arrow_back_ios_new</span></button>
         <div id="cont_data">
             <h2>Agregados recientemente</h2>
-            <article *ngFor="let ticket of listTickets" (click)="openDialog(dialogTemplate, ticket.id!)">
+            <article *ngFor="let ticket of firstData " (click)="openDialog(dialogTemplate, ticket.id!)">
             <img [src]="ticket.imageUrl" alt="{{ticket.name}}">
             <div id="cont_info">
                 <p>{{ticket.name}}</p>

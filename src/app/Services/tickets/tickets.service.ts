@@ -21,6 +21,10 @@ export class TicketsService {
     return this.http.get<Tickets[]>(this.apiUrl + '/api/Tickets/ListTickets');
   }
 
+  listRecentlyAddedTickets(): Observable<Tickets[]> {
+    return this.http.get<Tickets[]>(this.apiUrl + '/api/Tickets/ListRecently');
+  }
+
   editTicket(ticketId: string ,ticket: FormData): Observable<Tickets>{
     return this.http.put<Tickets>(this.apiUrl + '/api/Tickets/' + ticketId, ticket)
   }

@@ -15,7 +15,7 @@ import {MatIconModule} from '@angular/material/icon';
 })
 export class PrincipalUserComponent implements OnInit {
   listTickets!: Tickets[];
-  firstData?: Tickets[];
+  firstData!: Tickets[];
   listIdModal?: Tickets;
 
   InitialCount = 1;
@@ -38,9 +38,9 @@ export class PrincipalUserComponent implements OnInit {
   }
 
   listTicketsUserFilter(){
-    this.ticketsService.listTickets().subscribe(tickets => {
+    this.ticketsService.listRecentlyAddedTickets().subscribe(tickets => {
       this.firstData = tickets;
-    });
+    })
   }
 
   ControlHeader(){
