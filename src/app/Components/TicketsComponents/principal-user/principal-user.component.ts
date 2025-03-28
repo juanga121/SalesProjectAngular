@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Tickets } from '../../../Interfaces/tickets/tickets';
 import { TicketsService } from '../../../Services/tickets/tickets.service';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
-import {MatIconModule} from '@angular/material/icon';
+import { PaymentserviceService } from '../../../Services/Paymentservice/paymentservice.service';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import Swal from 'sweetalert2';
+import { AuthService } from '../../../Services/authservices/auth.service';
 
 @Component({
   selector: 'app-principal-user',
@@ -18,11 +21,17 @@ export class PrincipalUserComponent implements OnInit {
   firstData!: Tickets[];
   listIdModal?: Tickets;
 
+  paymentService = inject(PaymentserviceService);
+  authService = inject(AuthService);
+  router = inject(Router);
+
   InitialCount = 1;
 
   initialPrice? : number;
 
-  constructor(private ticketsService: TicketsService, private dialog: MatDialog) { }
+  constructor(private ticketsService: TicketsService,
+    private dialog: MatDialog,
+    private readonly formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.listTicketsUserAll();
@@ -140,5 +149,45 @@ export class PrincipalUserComponent implements OnInit {
     });
 
     carousel?.addEventListener('scroll', removeBotons);
+  }
+
+  errors: { [key: string]: string[] } = {};
+
+  AddPayment(){
+    const payments = {
+      PaymentsId: this.listIdModal?.id!,
+      PaymentsUsersId: this.authService.getUserId()!,
+      QuantityHistory: this.InitialCount,
+    };
+
+    console.log(payments);
+
+    this.paymentService.AddPaymentProcess(payments).subscribe({
+      next: (response: any) => {
+        Swal.fire('Ticket registrado', response.message, 'success');
+        this.dialog.closeAll();
+        this.router.navigate(['/PrincipalTickets/PaymentsProcess']);
+      },
+      error: (error) => {
+        if (Array.isArray(error)) {
+          this.errors = this.groupErrorsByProperty(error);
+        } else {
+          Swal.fire('Error', error, 'error');
+        }
+      }
+    })
+  }
+
+  private groupErrorsByProperty(errors: any[]): { [key: string]: string[] } {
+    const groupedErrors: { [key: string]: string[] } = {};
+
+    errors.forEach((error) => {
+      if (!groupedErrors[error.propertyName]) {
+        groupedErrors[error.propertyName] = [];
+      }
+      groupedErrors[error.propertyName].push(error.errorMessage);
+    });
+
+    return groupedErrors;
   }
 }

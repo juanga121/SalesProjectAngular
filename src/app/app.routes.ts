@@ -8,6 +8,7 @@ import { listGuard } from './Auth/guards/list.guard';
 import { AddTicketsComponent } from './Components/TicketsComponents/add-tickets/add-tickets.component';
 import { EditTicketsComponent } from './Components/TicketsComponents/edit-tickets/edit-tickets.component';
 import { PrincipalUserComponent } from './Components/TicketsComponents/principal-user/principal-user.component';
+import { PaymentsComponent } from './Components/Payments/payments.component';
 
 export const routes: Routes = [
     {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -17,5 +18,6 @@ export const routes: Routes = [
     {path: 'listTickets', component: ListTicketsComponent, canActivate: [listGuard]},
     {path: 'listTickets/Add-tickets', component: AddTicketsComponent, canActivate: [listGuard]},
     {path: 'listTickets/Edit-tickets/:id', component: EditTicketsComponent, canActivate: [listGuard]},
-    {path: 'PrincipalTickets', component: PrincipalUserComponent, canActivate: [listGuard]}
+    {path: 'PrincipalTickets', component: PrincipalUserComponent, canActivate: [listGuard]},
+    {path: 'PrincipalTickets/PaymentsProcess', component: PaymentsComponent, canActivate: [listGuard]}
 ];

@@ -11,7 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
   providedIn: 'root'
 })
 export class AuthService {
-  private tokenKey = 'token'; //clave para almacenar el token
+  private tokenKey = 'token';
   private apiUrl = environment.apiUrl;
   private jwtHelper = new JwtHelperService();
 
@@ -57,6 +57,15 @@ export class AuthService {
     if (token){
       const permissionsToken = this.jwtHelper.decodeToken(token);
       return permissionsToken['Permissions'] || null;
+    }
+    return null;
+  }
+
+  getUserId(): string | null {
+    const token = this.getToken();
+    if (token) {
+      const userIdToken = this.jwtHelper.decodeToken(token);
+      return userIdToken['Id'] || null;
     }
     return null;
   }
