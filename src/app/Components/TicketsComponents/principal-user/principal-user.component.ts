@@ -8,6 +8,7 @@ import { PaymentserviceService } from '../../../Services/Paymentservice/payments
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { AuthService } from '../../../Services/authservices/auth.service';
+import { ErrorService } from '../../../Services/ErrorControl/error.service';
 
 @Component({
   selector: 'app-principal-user',
@@ -24,6 +25,7 @@ export class PrincipalUserComponent implements OnInit {
   paymentService = inject(PaymentserviceService);
   authService = inject(AuthService);
   router = inject(Router);
+  serviceErrors = inject(ErrorService);
 
   InitialCount = 1;
 
@@ -164,30 +166,16 @@ export class PrincipalUserComponent implements OnInit {
 
     this.paymentService.AddPaymentProcess(payments).subscribe({
       next: (response: any) => {
-        Swal.fire('Ticket registrado', response.message, 'success');
         this.dialog.closeAll();
         this.router.navigate(['/PrincipalTickets/PaymentsProcess']);
       },
       error: (error) => {
         if (Array.isArray(error)) {
-          this.errors = this.groupErrorsByProperty(error);
+          this.errors = this.serviceErrors.groupErrorsByProperty(error);
         } else {
           Swal.fire('Error', error, 'error');
         }
       }
     })
-  }
-
-  private groupErrorsByProperty(errors: any[]): { [key: string]: string[] } {
-    const groupedErrors: { [key: string]: string[] } = {};
-
-    errors.forEach((error) => {
-      if (!groupedErrors[error.propertyName]) {
-        groupedErrors[error.propertyName] = [];
-      }
-      groupedErrors[error.propertyName].push(error.errorMessage);
-    });
-
-    return groupedErrors;
   }
 }

@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../Services/authservices/auth.service';
 import Swal from 'sweetalert2';
+import { ErrorService } from '../../../Services/ErrorControl/error.service';
 
 @Component({
   selector: 'app-register-users',
@@ -22,6 +23,7 @@ export class RegisterUsersComponent {
   userService = inject(UsersService)
   router = inject(Router)
   authService = inject(AuthService)
+  serviceErrors = inject(ErrorService)
 
   identityOptions = [
     { value: UserIdentityType.CedulaCiudadania, label: 'Cedula Ciudadania' },
@@ -66,24 +68,12 @@ export class RegisterUsersComponent {
         },
         error: (error) => {
           if (Array.isArray(error)) {
-            this.errors = this.groupErrorsByProperty(error);
+            this.errors = this.serviceErrors.groupErrorsByProperty(error);
           } else {
             Swal.fire('Error', error, 'error');
           }
         }
       }
     );
-  }
-  private groupErrorsByProperty(errors: any[]): { [key: string]: string[] } {
-    const groupedErrors: { [key: string]: string[] } = {};
-
-    errors.forEach((error) => {
-      if (!groupedErrors[error.propertyName]) {
-        groupedErrors[error.propertyName] = [];
-      }
-      groupedErrors[error.propertyName].push(error.errorMessage);
-    });
-
-    return groupedErrors;
   }
 }

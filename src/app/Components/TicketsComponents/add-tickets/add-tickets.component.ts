@@ -4,6 +4,7 @@ import { TicketsService } from '../../../Services/tickets/tickets.service';
 import { Router, RouterLink } from '@angular/router';
 import Swal from 'sweetalert2';
 import { CommonModule } from '@angular/common';
+import { ErrorService } from '../../../Services/ErrorControl/error.service';
 
 @Component({
   selector: 'app-add-tickets',
@@ -16,6 +17,7 @@ export class AddTicketsComponent {
   private readonly formBuilder = inject(FormBuilder)
   ticketService = inject(TicketsService)
   router = inject(Router)
+  serviceErrors = inject(ErrorService)
 
   selectedFile!: File;
 
@@ -65,23 +67,11 @@ export class AddTicketsComponent {
         },
         error: (error) => {
           if (Array.isArray(error)) {
-              this.errors = this.groupErrorsByProperty(error);
+              this.errors = this.serviceErrors.groupErrorsByProperty(error);
           } else {
               Swal.fire("Error inesperado");
           }
         }
     });
-  }
-  private groupErrorsByProperty(errors: any[]): { [key: string]: string[] } {
-    const groupedErrors: { [key: string]: string[] } = {};
-
-    errors.forEach((error) => {
-      if (!groupedErrors[error.propertyName]) {
-        groupedErrors[error.propertyName] = [];
-      }
-      groupedErrors[error.propertyName].push(error.errorMessage);
-    });
-
-    return groupedErrors;
   }
 }
