@@ -157,9 +157,9 @@ export class PrincipalUserComponent implements OnInit {
 
   AddPayment(){
     const payments = {
-      PaymentsId: this.listIdModal?.id!,
-      PaymentsUsersId: this.authService.getUserId()!,
-      QuantityHistory: this.InitialCount,
+      paymentsId: this.listIdModal?.id!,
+      paymentsUsersId: this.authService.getUserId()!,
+      quantityHistory: this.InitialCount,
     };
 
     console.log(payments);

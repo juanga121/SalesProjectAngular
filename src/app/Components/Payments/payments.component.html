@@ -1,6 +1,9 @@
 <div *ngIf="payment">
-    <p>{{payment.id}}</p>
-    <p>{{payment.PaymentsUsersId}}</p>
-    <p>{{payment.PaymentsId}}</p>
-    <p>{{payment.TotalToPay}}</p> 
+    <p>Process: {{payment.id}}</p>
+    <p>Usuario: {{payment.paymentsUsersId}}</p>
+    <p>Ticket a comprar: {{payment.paymentsId}}</p>
+    <p>Total a pagar: {{payment.totalToPay}}</p> 
+    <p>Fecha de creacion: {{payment.creation_date}}</p>
+
+    <button (click)="UpdatePaymentStatus(payment)">Confirmar</button>
 </div>

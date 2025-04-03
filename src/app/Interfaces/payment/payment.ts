@@ -1,14 +1,14 @@
 export interface Payment {
     id?: string;
-    PaymentsId: string;
-    PaymentsUsersId: string;
-    QuantityHistory: number;
-    TotalToPay?: number;
-    PurchaseStatus?: purchaseStatus;
-    Creation_date?: string;
+    paymentsId: string;
+    paymentsUsersId: string;
+    quantityHistory: number;
+    totalToPay?: number;
+    purchaseStatus?: PurchaseStatus;
+    creation_date?: string;
 }
 
-export enum purchaseStatus {
+export enum PurchaseStatus {
     Retencion,
     Aprobado,
     Expirado

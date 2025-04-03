@@ -6,7 +6,7 @@ export const listGuard: CanActivateFn = () => {
   const authService = inject(AuthService);
   const router = inject(Router);
 
-  if(authService.isLogged() && authService.getUserPermissions() === 'Administrador' || authService.getUserPermissions() === 'Consumidor'){
+  if(authService.isLogged() && authService.getUserPermissions() === 'Consumidor' || authService.getUserPermissions() === 'Administrador'){
     return true;
   }else{
     router.navigate(['/']);
