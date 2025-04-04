@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { Tickets } from '../../../Interfaces/tickets/tickets';
 import { TicketsService } from '../../../Services/tickets/tickets.service';
 import { CommonModule } from '@angular/common';
@@ -17,7 +17,7 @@ import { ErrorService } from '../../../Services/ErrorControl/error.service';
   templateUrl: './principal-user.component.html',
   styleUrl: './principal-user.component.scss'
 })
-export class PrincipalUserComponent implements OnInit {
+export class PrincipalUserComponent implements OnInit, OnDestroy {
   listTickets!: Tickets[];
   firstData!: Tickets[];
   listIdModal?: Tickets;
@@ -54,11 +54,15 @@ export class PrincipalUserComponent implements OnInit {
     })
   }
 
+  private scrollHandler = () => {
+    const contHeader = document.querySelector('#cont_header');
+    if (contHeader) {
+      contHeader.classList.toggle('bajo', window.scrollY > 0);
+    }
+  };
+  
   ControlHeader(){
-    window.addEventListener('scroll', () => {
-      const contHeader = document.querySelector('#cont_header');
-      contHeader!.classList.toggle('bajo', window.scrollY > 0);
-    });
+    window.addEventListener('scroll', this.scrollHandler);
   }
 
   openDialog(templateRef: any, ticketsId: string) {
@@ -177,5 +181,9 @@ export class PrincipalUserComponent implements OnInit {
         }
       }
     })
+  }
+
+  ngOnDestroy(): void {
+    window.removeEventListener('scroll', this.scrollHandler);
   }
 }

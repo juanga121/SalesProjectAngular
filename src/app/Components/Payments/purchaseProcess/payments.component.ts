@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { Payment, PurchaseStatus } from '../../Interfaces/payment/payment';
-import { PaymentserviceService } from '../../Services/Paymentservice/paymentservice.service';
-import { AuthService } from '../../Services/authservices/auth.service';
+import { Payment, PurchaseStatus } from '../../../Interfaces/payment/payment';
+import { PaymentserviceService } from '../../../Services/Paymentservice/paymentservice.service';
+import { AuthService } from '../../../Services/authservices/auth.service';
 import { Router } from '@angular/router';
 import { tick } from '@angular/core/testing';
 import { CommonModule } from '@angular/common';

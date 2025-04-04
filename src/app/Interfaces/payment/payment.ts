@@ -8,6 +8,18 @@ export interface Payment {
     creation_date?: string;
 }
 
+export interface PaymentHistory {
+    id?: string;
+    nameTicket: string;
+    nameUser: string;
+    emailUser: string;
+    totalToPay: number;
+    quantityHistory: number;
+    purchaseStatus: PurchaseStatus;
+    creation_date: string;
+}
+
+
 export enum PurchaseStatus {
     Retencion,
     Aprobado,
