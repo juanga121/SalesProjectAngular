@@ -26,6 +26,12 @@ header div#cont_header.bajo{
     background-color: #123463;
 }
 
+header div#cont_options{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
     header div#cont_header figure#cont_logo{
         display: flex;
         align-items: center;
@@ -67,8 +73,6 @@ div#cont_first{
         background-color: rgba(0, 0, 0, 0.9);
         z-index: 1;
     }
-
-    
 
     div#cont_first div#cont_data{
         position: absolute;
@@ -299,6 +303,10 @@ div#cont_cards{
     div#cont_cards{
         grid-template-columns: repeat(2, 250px);
     }
+
+    header div#cont_options{
+        gap: 30px;
+    }
 }
 
 @media screen and (min-width: 840px){
@@ -354,6 +362,10 @@ div#cont_cards{
 
     #close_modal{
         color: black;
+    }
+
+    header div#cont_options{
+        gap: 40px;
     }
 }
 @media screen and (min-width: 1120px){

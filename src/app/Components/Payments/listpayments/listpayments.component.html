@@ -1,8 +1,65 @@
-<div *ngFor="let payments of payment">
-    <p>Usuario: {{payments.nameUser}}</p>
-    <p>Email usuario: {{payments.emailUser}}</p>
-    <p>Ticket comprado: {{payments.nameTicket}}</p>
-    <p>Cantidad a comprada: {{payments.quantityHistory}}</p>
-    <p>Total a pagar: {{payments.totalToPay}}</p>
-    <p>Estado: {{payments.purchaseStatus}}</p>
+<div id="cont_principal">
+<header>
+    <div id="cont_header">
+        <figure id="cont_logo">
+            <img src="../../../assets/boleto (2).png">
+            <p>Ticketazo</p>
+        </figure>
+        <div id="cont_options">
+            <figure id="cont_goout" routerLink="/PrincipalTickets">
+                <img src="../../../../assets/portapapeles.png" alt="Logo">
+                <p>Tickets disponibles</p>
+            </figure>
+            <figure id="cont_goout" routerLink="/login">
+                <img src="../../../assets/puerta-de-salida.png">
+                <p>Cerrar sesion</p>
+            </figure>
+        </div>
+    </div>
+</header>
+<div id="cont_principal_responsive">
+    <section *ngFor="let payments of payment">
+        <article id="cont_user">
+            <p data-label="Nombre usuario: ">{{ payments.nameUser }}</p>
+            <p data-label="Correo: ">{{ payments.emailUser }}</p>
+            <p data-label="Nombre del ticket: ">{{ payments.nameTicket }}</p>
+            <p data-label="Cantidad: ">{{ payments.quantityHistory }}</p>
+            <p data-label="Total: ">{{ payments.totalToPay | currency }}</p> 
+            <p data-label="Estado de compra: ">
+                <span *ngIf="payments.purchaseStatus == 0">Retención</span>
+                <span *ngIf="payments.purchaseStatus == 1">Aprobado</span>
+                <span *ngIf="payments.purchaseStatus == 2">Expirado</span>
+            </p>   
+        </article>
+    </section>
+</div>
+
+<div id="cont_principal_table">
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre usuario</th>
+                <th>Correo</th>
+                <th>Nombre ticket</th>
+                <th>Cantidad</th>
+                <th>Total</th>
+                <th>Estado de compra</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let payments of payment">
+                <td>{{ payments.nameUser }}</td>
+                <td>{{ payments.emailUser }}</td>
+                <td>{{ payments.nameTicket }}</td>
+                <td>{{ payments.quantityHistory}}</td>
+                <td>{{ payments.totalToPay }}</td>
+                <td>
+                    <span *ngIf="payments.purchaseStatus == 0">Retención</span>
+                    <span *ngIf="payments.purchaseStatus == 1">Aprobado</span>
+                    <span *ngIf="payments.purchaseStatus == 2">Expirado</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 </div>

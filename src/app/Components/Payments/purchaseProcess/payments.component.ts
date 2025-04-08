@@ -45,7 +45,7 @@ export class PaymentsComponent implements OnInit {
     this.paymentService.ChangeStatus(idPayment, updatedPayment).subscribe({
       next: () => {
         Swal.fire('Proceso de compra realizado', 'Gracias por tu compra' , 'success');
-        this.router.navigate(['/PrincipalTickets']);
+        this.router.navigate(['PrincipalTickets/ListPayments']);
       },
       error: (error) => {
         console.error('Error updating payment status:', error);
