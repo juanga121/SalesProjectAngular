@@ -50,16 +50,21 @@ header div#cont_header{
 
     header div#cont_header figure#cont_add img{
         width: 50px;
-        margin: 8px;
     }
-    header div#cont_header figure#cont_add img{
-        width: 40px;
+    header div#cont_header figure#cont_goout img{
+        width: 45px;
     }
     header div#cont_header figure#cont_add p{
         display: none;
     }
     header div#cont_header figure#cont_goout p{
         display: none;
+    }
+
+    #cont_medio{
+        display: flex;
+        align-items: center;
+        gap: 10px;
     }
 
     #cont_principal_responsive{
@@ -91,15 +96,19 @@ header div#cont_header{
     #cont_options{
         display: flex;
         align-items: center;
+        gap: 20px;
+    }
+
+    #cont_medio{
+        gap: 20px;
     }
 
     header div#cont_header figure#cont_add p{
         display: block;
-        margin: 0 20px 0 0;
+        
     }
     header div#cont_header figure#cont_goout p{
         display: block;
-        margin: 0 0 0 20px;
         cursor: pointer;
     }
 

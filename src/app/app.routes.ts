@@ -18,7 +18,7 @@ export const routes: Routes = [
     {path: 'register', component: RegisterUsersComponent},
     {path: 'listUsers', component: ListUsersComponent, canActivate: [authGuard]},
     {path: 'listTickets', component: ListTicketsComponent, canActivate: [listGuard]},
-    {path: 'listTickets/ListPayments', component: ListpaymentsAllComponent, canActivate: [listGuard]},
+    {path: 'listTickets/ListAllPayments', component: ListpaymentsAllComponent, canActivate: [listGuard]},
     {path: 'listTickets/Add-tickets', component: AddTicketsComponent, canActivate: [listGuard]},
     {path: 'listTickets/Edit-tickets/:id', component: EditTicketsComponent, canActivate: [listGuard]},
     {path: 'PrincipalTickets', component: PrincipalUserComponent, canActivate: [listGuard]},

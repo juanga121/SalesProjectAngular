@@ -25,8 +25,8 @@ export class PaymentserviceService {
     return this.http.put<Payment>(this.apiUrl + '/api/PaymentsProcess/' + id, payment);
   }
 
-  GetAllPayments(): Observable<Payment[]>{
-    return this.http.get<Payment[]>(this.apiUrl + '/api/PaymentsProcess/GetPruchaseHistoryByAdmin');
+  GetAllPayments(): Observable<PaymentHistory[]>{
+    return this.http.get<PaymentHistory[]>(this.apiUrl + '/api/PaymentsProcess/GetPurchaseHistoryByAdmin');
   }
 
   GetPaymentsByIdUsers(id: string): Observable<PaymentHistory[]>{
