@@ -26,7 +26,7 @@
             <p data-label="Cantidad: ">{{ payments.quantityHistory }}</p>
             <p data-label="Total: ">{{ payments.totalToPay | currency }}</p> 
             <p data-label="Estado de compra: ">
-                <span *ngIf="payments.purchaseStatus == 0">Retención</span>
+                <span *ngIf="payments.purchaseStatus == 0" class="go_confirmation" (click)="GoConfirmation()">Continuar</span>
                 <span *ngIf="payments.purchaseStatus == 1">Aprobado</span>
                 <span *ngIf="payments.purchaseStatus == 2">Expirado</span>
             </p>   
@@ -52,9 +52,9 @@
                 <td>{{ payments.emailUser }}</td>
                 <td>{{ payments.nameTicket }}</td>
                 <td>{{ payments.quantityHistory}}</td>
-                <td>{{ payments.totalToPay }}</td>
+                <td>{{ payments.totalToPay | currency }}</td>
                 <td>
-                    <span *ngIf="payments.purchaseStatus == 0">Retención</span>
+                    <span *ngIf="payments.purchaseStatus == 0" class="go_confirmation" (click)="GoConfirmation()">Continuar</span>
                     <span *ngIf="payments.purchaseStatus == 1">Aprobado</span>
                     <span *ngIf="payments.purchaseStatus == 2">Expirado</span>
                 </td>

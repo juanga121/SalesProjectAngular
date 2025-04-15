@@ -75,6 +75,14 @@ header div#cont_options{
                 display: none;
             }
 
+            .go_confirmation{
+                background-color: #123463;
+                cursor: pointer;
+                padding: 10px;
+                color: white;
+                border-radius: 5px;
+            }
+
 @media screen and (min-width: 840px){
     header div#cont_header figure#cont_goout p{
         display: block;

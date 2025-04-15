@@ -28,4 +28,8 @@ export class ListpaymentsComponent implements OnInit {
       this.payment = tickets;
     });
   }
+
+  GoConfirmation(){
+    this.router.navigate(['/PrincipalTickets/PaymentsProcess']);
+  }
 }
